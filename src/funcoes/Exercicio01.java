@@ -1,38 +1,31 @@
 package funcoes;
 
-import java.util.Scanner;
+import javax.swing.JOptionPane;
 
-public class Exercicio01 {
-	
-	public static void main(String[] args) {
-		
-		Scanner sc = new Scanner(System.in);
-		
-		System.out.println("Enter three numbers:");
-		int a = sc.nextInt();
-		int b = sc.nextInt();
-		int c = sc.nextInt();
-		
-		int higher = max(a, b, c);
-		
-		showResult(higher);
-		
-		sc.close();
-	}
+public class WhichNumberTheHighest {
+    public static int higherNumber(int x, int y, int z){
+        int FinalValor;
+        if (x > y && x > z){
+            FinalValor = x;
+            }
+        else if (y > z){
+            FinalValor = y;
+        }
+        else{
+            FinalValor = z;
+        }
 
-	public static int max(int x, int y, int z) {
-		int aux;
-		if ( x > y && x > z) {
-			aux = x;
-		} else if (y > z) {
-			aux = y;
-		} else {
-			aux = z;
-		}
-		return aux;
-	}
-	
-	public static void showResult(int value) {
-		System.out.println("Higher = " + value);
-	}
+        return FinalValor;
+    }
+
+    public static void main(String[] args) {
+        int a = Integer.parseInt(JOptionPane.showInputDialog("Write a first number: "));
+        int b = Integer.parseInt(JOptionPane.showInputDialog("Write a second number: "));
+        int c = Integer.parseInt(JOptionPane.showInputDialog("Write a third number: "));
+
+        int higher = higherNumber(a, b, c);
+
+        JOptionPane.showMessageDialog(null, "Your entered numbers were \n" + a + "\n" + b + "\n" + c);
+        JOptionPane.showMessageDialog(null, "The largest number entered is " + higher);
+    }
 }
